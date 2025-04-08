@@ -1,0 +1,50 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block 'body' %}
+<div class="d-flex align-items-center justify-content-center min-vh-100" style="background: #212529;">
+    <div class="card shadow-lg p-4 border-0 rounded-4" style="width: 100%; max-width: 400px; background:rgb(171, 154, 21);">
+        <div class="text-center">
+            <img class="mb-3" src="{% static 'images/logo.png' %}" alt="AutoMax Logo" width="80" height="80">
+            <h3 class="fw-bold text-dark">Create an Account</h3>
+            <p class="text-secondary">Sign up to get started</p>
+        </div>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                {{ register_form|crispy }}
+            </div>
+            <button class="btn btn-dark w-100 py-2" type="submit">Register</button>
+        </form>
+        <p class="text-center mt-3 mb-0" style="color: #212529;">
+            Already have an account? <a href="{% url 'login' %}" class="text-danger fw-bold">Login</a>
+        </p>
+        <p class="text-center mt-4 small" style="color: #212529;">
+            © {% now 'Y' %} Mr. Bhavya Kumar Singh | CS Engineer. All rights reserved.
+        </p>
+    </div>
+</div>
+
+<style>
+    /* Username, Password & Confirm Password Labels */
+    label {
+        color: #212529 !important;
+        font-weight: 500;
+    }
+
+    /* Password Help Text & Validation Messages */
+    .helptext, .help-block {
+        color: #495057 !important; /* Dark Grey for better visibility */
+        font-size: 14px;
+    }
+
+    /* Error Messages */
+    .errorlist {
+        color: red !important;
+        font-size: 14px;
+    }
+</style>
+{% endblock %}
+
+{% block 'footer' %} {% endblock %}
